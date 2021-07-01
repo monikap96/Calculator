@@ -1,41 +1,62 @@
 <?php
 require_once dirname(__FILE__).'/../config.php';
 
-$amount = $_REQUEST ['amount'];
-$year = $_REQUEST ['year'];
-$percent= $_REQUEST ['percent'];
+include _ROOT_PATH."/app/security/checkRole.php";
 
-if ( ! (isset($amount) && isset($year) && isset($percent))) {
-	$messages [] = 'Błędne wywołanie aplikacji. Brak jednego z parametrów.';
-}
+$values = array();
+$CalcMessages = array();
+$monthlyRate=null;
+$allRates=null;
+$results=array();
 
-if ( $amount == "") {
-	$messages [] = 'Nie podano liczby 1';
+function getCalcParams(&$values){
+    $values['amount'] = isset($_REQUEST['amount']) ? $_REQUEST['amount'] : null;
+    $values['year'] = isset($_REQUEST['year']) ? $_REQUEST['year'] : null;
+    $values['percent']= isset($_REQUEST['percent']) ? $_REQUEST['percent'] : null;
 }
-if ( $year == "") {
-	$messages [] = 'Nie podano liczby 2';
-}
-if ( $percent == "") {
-	$messages [] = 'Nie podano liczby 3';
-}
+function validateValues($values, &$CalcMessages){
+    if(!(isset($values['amount'])&& isset($values['year']) && isset($values['percent']))){
+        return false;
+    }
+    if ( $values['amount']== "") {
+            $CalcMessages [] = 'Nie podano liczby 1';
+    }
+    if ( $values['year'] == "") {
+            $CalcMessages [] = 'Nie podano liczby 2';
+    }
+    if ( $values['percent'] == "") {
+            $CalcMessages [] = 'Nie podano liczby 3';
+    }
+    if (count ( $CalcMessages ) != 0){
+        return false;
+    }
 
-if (empty( $messages )) {
-	if (! is_numeric( $amount )) {
-		$messages [] = 'Pierwsza wartość nie jest liczbą całkowitą';
-	}
-	if (! is_numeric( $year )) {
-		$messages [] = 'Druga wartość nie jest liczbą całkowitą';
-	}	
-	if (! is_numeric( $percent )) {
-		$messages [] = 'Trzecia wartość nie jest liczbą całkowitą';
-	}
+    if (empty($CalcMessages)) {
+            if (! is_numeric( $values['amount'] )) {
+                    $CalcMessages [] = 'Pierwsza wartość nie jest liczbą całkowitą';
+            }
+            if (! is_numeric( $values['year'] )) {
+                    $CalcMessages [] = 'Druga wartość nie jest liczbą całkowitą';
+            }	
+            if (! is_numeric( $values['percent'] )) {
+                    $CalcMessages [] = 'Trzecia wartość nie jest liczbą całkowitą';
+            }
+    }
+    return (count($CalcMessages)!=0) ? false : true;
 }
+function countCreditValues(&$values, &$CalcMessages, &$monthlyRate, &$allRates){
+    if (empty ( $CalcMessages )) {
+        $amount = floatval($values['amount']);
+        $year = floatval($values['year']);
+        $monthlyRate = $values['amount']/($values['year']*12) * (100+ $values['percent'])/100 ;
+        $allRates = $values['amount']*(100+$values['percent'])/100;
+    }
+}
+getCalcParams($values);
 
-if (empty ( $messages )) {
-	$amount = floatval($amount);
-	$year = floatval($year);
-	$monthlyRate = $amount/($year*12) * (100+ $percent)/100 ;
-	$allRates = $amount*(100+$percent)/100;
+if(validateValues($values, $CalcMessages)){
+    countCreditValues($values, $CalcMessages, $monthlyRate, $allRates);
+    
 }
 
 include 'credit_calc_view.php';
