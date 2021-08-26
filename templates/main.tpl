@@ -74,7 +74,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
 
 
       <!--CREDIT CALCULATOR--> 
-     <section class="hero d-flex flex-column justify-content-center align-items-center" id="home">
+     <section class="hero d-flex flex-column align-items-center" id="home" style="padding-top: 100px;">
 
             <div class="bg-overlay"></div>
 
