@@ -45,9 +45,6 @@ https://www.tooplate.com/view/2119-gymso-fitness
                         <a href="{$app_url}/app/credit_calc.php" class="nav-link smoothScroll">Credit Calculator</a>
                     </li>
                     
-                    <li class="nav-item">
-                        <a href="{$app_url}/app/credit_calc_1.php" class="nav-link smoothScroll">Credit Calculator_1</a>
-                    </li>
 
 <!--                    <li class="nav-item">
                         <a href="#class" class="nav-link smoothScroll">Classes</a>
