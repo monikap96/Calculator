@@ -1,6 +1,6 @@
 <?php
 require_once dirname(__FILE__).'/../config.php';
-require_once _ROOT_PATH.'/lib/smarty/Smarty.class.php';
+require_once $myConfig->root_path.'/lib/smarty/Smarty.class.php';
 
 $values = array();
 $CalcMessages = array();
@@ -59,9 +59,9 @@ if(validateValues($values, $CalcMessages)){
 
 $form = null;
 $smarty = new Smarty();
-$smarty->assign('app_url',_APP_URL);
-$smarty->assign('app_root',_APP_ROOT);
-$smarty->assign('root_path',_ROOT_PATH);
+$smarty->assign('app_url',$myConfig->app_url);
+$smarty->assign('app_root',$myConfig->app_root);
+$smarty->assign('root_path',$myConfig->root_path);
 
 $smarty->assign('pageTitle','Credit calculator');
 $smarty->assign('form',$form);
@@ -76,6 +76,6 @@ if(isset($allRates)){
     $smarty->assign('allRates',$allRates);
 }
 
-$smarty->display(_ROOT_PATH.'/app/credit_calc.html');
+$smarty->display($myConfig->root_path.'/app/credit_calc.html');
 
 ?>
