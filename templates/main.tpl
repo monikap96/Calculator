@@ -28,7 +28,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
 
-            <a class="navbar-brand" href="{$app_url}/app/home.php">Home</a>
+            <a class="navbar-brand" href="#">Home</a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -42,7 +42,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
                     </li>-->
 
                     <li class="nav-item">
-                        <a href="{$app_url}/app/credit_calc.php" class="nav-link smoothScroll">Credit Calculator</a>
+                        <a href="{$myConfig->app_url}/app/credit_calc.php" class="nav-link smoothScroll">Credit Calculator</a>
                     </li>
                     
 
