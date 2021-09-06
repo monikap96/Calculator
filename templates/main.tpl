@@ -11,9 +11,9 @@
      <meta name="author" content="">
      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-     <link rel="stylesheet" href="{$app_url}/css/bootstrap.min.css">
-     <link rel="stylesheet" href="{$app_url}/css/font-awesome.min.css">
-     <link rel="stylesheet" href="{$app_url}/css/aos.css">
+     <link rel="stylesheet" href="{$myConfig->app_url}/css/bootstrap.min.css">
+     <link rel="stylesheet" href="{$myConfig->app_url}/css/font-awesome.min.css">
+     <link rel="stylesheet" href="{$myConfig->app_url}/css/aos.css">
 
      <!-- MAIN CSS -->
      <link rel="stylesheet" href="{$app_url}/css/tooplate-gymso-style.css">

@@ -3,36 +3,34 @@
 {block name=title}Credit calculator{/block}
 {block name=content}
     <div class="m-auto col-lg-8 col-md-6 col-12" >
-        <form action="{$app_url}/app/credit_calc.php" method="get" >
+        <form action="{$myConfig->app_url}/app/credit_calc.php" method="get" >
             <label for="id_amount" >Kwota jaką chcesz otrzymać: </label>
-            <input id="id_amount" type="text" name="amount" value="{$values['amount']|default: ''}" class="form-control"/>
+            <input id="id_amount" type="text" name="amount" value="{$values->amount|default: ''}" class="form-control"/>
            <br/>
             <label for="id_year">Na ile lat?: </label>
-            <input id="id_year" type="text" name="year" value="{$values['year']|default: ''}" class="form-control"/>
+            <input id="id_year" type="text" name="year" value="{$values->year|default: ''}" class="form-control"/>
             <br/>
             <label for="id_percent">Oprocentowanie: </label>
-            <input id="id_percent" type="text" name="percent" value="{$values['percent']|default: ''}" class="form-control"/>
+            <input id="id_percent" type="text" name="percent" value="{$values->percent|default: ''}" class="form-control"/>
             <br/>
             <!--<input type="submit" value="Oblicz" class="form-control btn custom-btn bg-color mt-3 aos-init aos-animate" />-->
             <button type="submit" value="Oblicz" class="form-control  aos-init aos-animate mt-3" id="submit-button">Oblicz</button>
         </form>	
 
         <br>
-        {if (isset($CalcMessages))} 
-            {if (count ( $CalcMessages ) > 0)} 
-                <ol class="text-danger" data-aos="fade-up">
-                {foreach  $CalcMessages as $CalcMessage}
-                {strip}
-                        <li>{$CalcMessage}</li>
-                {/strip}
-                {/foreach}
-                </ol>
-            {/if}
+        {if $messages->isError()} 
+            <ol class="text-danger" data-aos="fade-up">
+            {foreach  $messages->getErrors() as $error}
+            {strip}
+                    <li>{$error}</li>
+            {/strip}
+            {/foreach}
+            </ol>
         {/if}
 
-        {if (isset($monthlyRate))}
+        {if (isset($result->monthlyRate))}
         <div class="text-warning" data-aos="fade-up">
-            Miesięczna rata do zapłaty: {$monthlyRate|string_format:"%.2f"|default: ''} zł
+            Miesięczna rata do zapłaty: {$result->monthlyRate|string_format:"%.2f"|default: ''} zł
                     {/if}
                      <br>
 
