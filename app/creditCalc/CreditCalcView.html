@@ -1,9 +1,9 @@
-{extends file="../templates/main.tpl"}
+{extends file="../../templates/main.tpl"}
 
 {block name=title}Credit calculator{/block}
 {block name=content}
     <div class="m-auto col-lg-8 col-md-6 col-12" >
-        <form action="{$myConfig->app_url}/app/credit_calc.php" method="get" >
+        <form action="{$myConfig->action_url}creditCalc" method="get" >
             <label for="id_amount" >Kwota jaką chcesz otrzymać: </label>
             <input id="id_amount" type="text" name="amount" value="{$values->amount|default: ''}" class="form-control"/>
            <br/>

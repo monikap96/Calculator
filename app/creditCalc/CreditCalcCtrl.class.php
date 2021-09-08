@@ -1,9 +1,8 @@
 <?php
-require_once dirname(__FILE__).'/../config.php';
 require_once $myConfig->root_path.'/lib/smarty/Smarty.class.php';
 require_once $myConfig->root_path.'/lib/Messages.class.php';
-require_once $myConfig->root_path.'/app/CreditCalcForm.class.php';
-require_once $myConfig->root_path.'/app/CreditCalcResult.class.php';
+require_once $myConfig->root_path.'/app/creditCalc/CreditCalcForm.class.php';
+require_once $myConfig->root_path.'/app/creditCalc/CreditCalcResult.class.php';
 
 
 class CreditCalcCtrl{
@@ -97,7 +96,7 @@ class CreditCalcCtrl{
             $smarty->assign('allRates', $this->result->allRates);
         }
 
-        $smarty->display($myConfig->root_path.'/app/CreditCalcView.html');
+        $smarty->display($myConfig->root_path.'/app/creditCalc/CreditCalcView.html');
 
     }
 }
