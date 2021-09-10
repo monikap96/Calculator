@@ -1,14 +1,17 @@
 <?php
-    require_once dirname(__FILE__).'/core/Config.class.php';
+
+    require_once 'core/Config.class.php';
+    use core\Config;
     $myConfig = new Config();
-    include dirname(__FILE__).'/config.php';
+    require_once 'config.php';
     
     function &getConfig(){
         global $myConfig;
         return $myConfig;
     }
 
-    require_once getConfig()->root_path.'/core/Messages.class.php';
+    require_once 'core/Messages.class.php';
+    use core\Messages;
     $messages = new Messages();
     
     function &getMessages(){
@@ -32,7 +35,17 @@
         }
         return $smarty;
     }
+    require_once 'core/ClassLoader.class.php';
+    $classLoader = new core\ClassLoader();
     
-    require_once getConfig()->root_path.'/core/functions.php';
+    function &getClassLoader(){
+        global $classLoader;
+        return $classLoader;
+    }
+
+
+
+
+    require_once 'core/functions.php';
     
     $action = getParamFromRequest('action');

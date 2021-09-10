@@ -1,7 +1,8 @@
 <?php
-require_once 'CreditCalcForm.class.php';
-require_once 'CreditCalcResult.class.php';
+namespace app\controllers;
 
+use app\forms\CreditCalcForm;
+use app\transfers\CreditCalcResult;
 
 class CreditCalcCtrl{
     
