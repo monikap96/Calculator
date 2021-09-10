@@ -16,7 +16,7 @@
      <link rel="stylesheet" href="{$myConfig->app_url}/css/aos.css">
 
      <!-- MAIN CSS -->
-     <link rel="stylesheet" href="{$app_url}/css/tooplate-gymso-style.css">
+     <link rel="stylesheet" href="{$myConfig->app_url}/css/tooplate-gymso-style.css">
 <!--
 Tooplate 2119 Gymso Fitness
 https://www.tooplate.com/view/2119-gymso-fitness
@@ -470,11 +470,11 @@ https://www.tooplate.com/view/2119-gymso-fitness
     </div>
 
      <!-- SCRIPTS -->
-     <script src="../js/jquery.min.js"></script>
-     <script src="../js/bootstrap.min.js"></script>
-     <script src="../js/aos.js"></script>
-     <script src="../js/smoothscroll.js"></script>
-     <script src="../js/custom.js"></script>
+     <script src="js/jquery.min.js"></script>
+     <script src="js/bootstrap.min.js"></script>
+     <script src="js/aos.js"></script>
+     <script src="js/smoothscroll.js"></script>
+     <script src="js/custom.js"></script>
 
 </body>
 </html>
