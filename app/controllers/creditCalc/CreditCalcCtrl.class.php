@@ -55,11 +55,10 @@ class CreditCalcCtrl{
             $this->values->year= floatval($this->values->year);
             
             $this->result->monthlyRate = $this->values->amount/($this->values->year*12)*(100+ $this->values->percent)/100;
-//            $monthlyRate = $values['amount']/($values['year']*12) * (100+ $values['percent'])/100 ;
             $this->result->allRates = $this->values->amount*(100+$this->values->percent)/100;
-//            $allRates = $values['amount']*(100+$values['percent'])/100;
         }
     }
+
     public function process() {
         $this->getCalcParams();
 
@@ -69,19 +68,10 @@ class CreditCalcCtrl{
 
         $this->generateView();
     }
-
     
     public function generateView(){
-//        global $myConfig;
-//        $smarty = new Smarty();
-//        $smarty->assign('myConfig', $myConfig);
-//        $smarty->assign('app_url',$myConfig->app_url);
-//        $smarty->assign('app_root',$myConfig->app_root);
-//        $smarty->assign('root_path',$myConfig->root_path);
-
         getSmarty()->assign('pageTitle','Credit calculator');
         getSmarty()->assign('values',$this->values);
-//        $smarty->assign('messages',$this->messages);
         getSmarty()->assign('result',$this->result);
 
         if(isset($this->result->monthlyRate)){
@@ -93,7 +83,6 @@ class CreditCalcCtrl{
         }
 
         getSmarty()->display('CreditCalcView.html');
-
     }
 }
 ?>
