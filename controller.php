@@ -1,20 +1,19 @@
 <?php
 require_once 'init.php';
+
+getConfig()->login_action='login';
+
 switch ($action){
-    
-    case 'creditCalc':{
-//        include_once 'app/controllers/creditCalc/CreditCalcCtrl.class.php';
-        $myCtrl = new app\controllers\CreditCalcCtrl();
-        $myCtrl->process();
-        break;
-    }
     default :{
-//        include_once 'app/controllers/creditCalc/CreditCalcCtrl.class.php';
-        $myCtrl = new app\controllers\CreditCalcCtrl(); 
-        $myCtrl->process();
-        break;
+        control('app\\controllers','CreditCalcCtrl', 'generateView', ['user','admin']);
+    }
+    case 'login':{
+        control('app\\controllers','LoginCtrl', 'doLogin');
+    }case 'creditCalc':{
+        control(null, 'CreditCalcCtrl', 'process', ['user','admin']);
+    }
+    case 'logout':{
+        control(null,'LoginCtrl', 'doLogout', ['user', 'admin']);
     }
 }
-
-
 ?>

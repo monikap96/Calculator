@@ -48,4 +48,7 @@
 
     require_once 'core/functions.php';
     
+    session_start();
+    $myConfig->roles = isset($_SESSION['_roles']) ? unserialize($_SESSION['_roles']) : array();
+    
     $action = getParamFromRequest('action');

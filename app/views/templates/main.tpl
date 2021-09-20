@@ -57,6 +57,15 @@ https://www.tooplate.com/view/2119-gymso-fitness
                     <li class="nav-item">
                         <a href="#contact" class="nav-link smoothScroll">Contact</a>
                     </li>-->
+                    {if (isset($user->login))}
+                    <li class="nav-item">
+                       <span class="textUser">{$user->login} (rola: {$user->role})</span>
+                       <a href="{$myConfig->action_url}logout"  class="nav-link smoothScroll">wyloguj</a>
+                    </li>
+                    <li class="nav-item">
+                        
+                    </li>
+                    {/if}
                 </ul>
 
                 <ul class="social-icon ml-lg-3">

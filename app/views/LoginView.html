@@ -1,0 +1,25 @@
+{extends file="main.tpl"}
+
+{block name=content}
+
+<div class="m-auto col-lg-8 col-md-6 col-12" >
+    <form action="{$myConfig->action_url}login" method="post"  class="pure-form pure-form-aligned bottom-margin">
+            <!--<fieldset>-->
+            <div class="pure-control-group">
+                            <label for="id_login">Login: </label>
+                            <input id="id_login" type="text" name="login" class="form-control"/>
+                    </div>
+            <div class="pure-control-group">
+                            <label for="id_pass">Password: </label>
+                            <input id="id_pass" type="password" name="pass" class="form-control"/><br />
+                    </div>
+                    <div class="pure-controls">
+                        <button type="submit" class="form-control  aos-init aos-animate mt-3" id="submit-button">Zaloguj</button>
+                    </div>
+            <!--</fieldset>-->
+    </form>	
+</div>
+
+{include file='messages.tpl'}
+
+{/block}

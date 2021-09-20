@@ -3,6 +3,7 @@ namespace core;
 
 class Messages{
     private $errors = array();
+    private $infos = array();
     private $number = 0;
     
     public function addError($message){
@@ -20,5 +21,18 @@ class Messages{
     
     public function getErrors() {
         return $this->errors;
+    }
+    
+    public function addInfo($message){
+        $this->infos[] = $message;
+        $this->number++;
+    }
+    
+    public function isInfo() {
+        return count($this->infos)>0;
+    }
+    
+    public function getInfos() {
+        return $this->infos;
     }
 }

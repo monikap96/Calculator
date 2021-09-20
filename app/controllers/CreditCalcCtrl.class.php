@@ -37,15 +37,15 @@ class CreditCalcCtrl{
         }
 
         if (getMessages()->isEmpty()) {
-                if (! is_numeric($this->values->amount)) {
-                    getMessages()->addError('Pierwsza wartość nie jest liczbą rzeczywistą');
-                }
-                if (! is_numeric($this->values->year)) {
-                    getMessages()->addError('Druga wartość nie jest liczbą rzeczywistą');
-                }	
-                if (! is_numeric($this->values->percent)) {
-                    getMessages()->addError('Trzecia wartość nie jest liczbą rzeczywistą');
-                }
+            if (! is_numeric($this->values->amount)) {
+                getMessages()->addError('Pierwsza wartość nie jest liczbą rzeczywistą');
+            }
+            if (! is_numeric($this->values->year)) {
+                getMessages()->addError('Druga wartość nie jest liczbą rzeczywistą');
+            }	
+            if (! is_numeric($this->values->percent)) {
+                getMessages()->addError('Trzecia wartość nie jest liczbą rzeczywistą');
+            }
         }
         return (getMessages()->isError()) ? false : true;
     }
@@ -72,6 +72,8 @@ class CreditCalcCtrl{
     
     public function generateView(){
         getSmarty()->assign('pageTitle','Credit calculator');
+        getSmarty()->assign('user',unserialize($_SESSION['user']));
+		
         getSmarty()->assign('values',$this->values);
         getSmarty()->assign('result',$this->result);
 
