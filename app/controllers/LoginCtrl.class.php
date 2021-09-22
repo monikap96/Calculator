@@ -34,11 +34,11 @@ class LoginCtrl{
             if($this->form->login=="admin" && $this->form->password=="admin"){
                 $user = new User($this->form->login, 'admin');
                 $_SESSION['user']= serialize($user);
-                addROle($user->role);
+                addRole($user->role);
             }else if($this->form->login=="user" && $this->form->password=="user"){
                 $user = new User($this->form->login, 'user');
                 $_SESSION['user']= serialize($user);
-                addROle($user->role);
+                addRole($user->role);
             }else{
                 getMessages()->addError("Niepoprawny login lub hasło");
             }
@@ -52,7 +52,7 @@ class LoginCtrl{
         getSmarty()->display('LoginView.html');
     }
     
-    public function doLogin() {
+    public function action_login() {
         $this->getParams();
         if($this->verify()){
             header("Location:".getConfig()->app_url."/");
@@ -61,7 +61,7 @@ class LoginCtrl{
         }
     }
     
-    public function doLogout() {
+    public function action_logout() {
         session_destroy();
         getMessages()->addInfo("Poprawnie wylogowano");
         $this->generateView();

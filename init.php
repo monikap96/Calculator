@@ -24,7 +24,7 @@
     function &getSmarty(){
         global $smarty;
         if(!isset($smarty)){
-            include_once getConfig()->root_path.'/lib/smarty/Smarty.class.php';
+            include_once 'lib/smarty/Smarty.class.php';
             $smarty = new Smarty();
             $smarty->assign('myConfig', getConfig());
             $smarty->assign('messages', getMessages());
@@ -43,7 +43,12 @@
         return $classLoader;
     }
 
-
+    require_once 'core/Router.class.php'; 
+    $router = new core\Router();
+    function &getRouter(): core\Router {
+        global $router;
+        return $router;
+    }
 
 
     require_once 'core/functions.php';
@@ -51,4 +56,4 @@
     session_start();
     $myConfig->roles = isset($_SESSION['_roles']) ? unserialize($_SESSION['_roles']) : array();
     
-    $action = getParamFromRequest('action');
+    $router->setAction(getParamFromRequest('action'));

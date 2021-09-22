@@ -19,7 +19,7 @@ class CreditCalcCtrl{
         $this->values->year = getParamFromRequest('year');
         $this->values->percent = getParamFromRequest('percent');
     }   
-    public function validateValues(){
+    public function action_calcCompute(){
         if(!(isset($this->values->amount)&& isset($this->values->year) && isset($this->values->percent))){
             return false;
         }
@@ -60,10 +60,10 @@ class CreditCalcCtrl{
         }
     }
 
-    public function process() {
+    public function action_calcShow() {
         $this->getCalcParams();
 
-        if($this->validateValues()){
+        if($this->action_calcCompute()){
             $this->countCreditValues();
         }
 
