@@ -3,6 +3,8 @@ namespace app\controllers;
 
 use app\forms\CreditCalcForm;
 use app\transfers\CreditCalcResult;
+use PDOException;
+use DateTime;
 
 class CreditCalcCtrl{
     
@@ -65,9 +67,29 @@ class CreditCalcCtrl{
 
         if($this->action_calcCompute()){
             $this->countCreditValues();
+            $this->action_addResultToDB();
         }
-
+        
         $this->generateView();
+    }
+    
+    public function action_addResultToDB() {
+        if(!getMessages()->isError()>0){
+            try{
+                getDatabase()->insert("credit_calc",[
+                    "kwota" => $this->values->amount,
+                    "lata" => $this->values->year,
+                    "oprocentowanie" => $this->values->percent,
+                    "miesięczna_rata" => $this->result->monthlyRate,
+                    "kwota_do_zapłaty" => $this->result->allRates,
+                    "data" => date("Y-m-d H:i:s")
+                ]);
+                getMessages()->addInfo("dodano do bazy");
+            } catch (\PDOException $ex) {
+                getMessages()->addError('Wystąpił nieoczekiwany błąd podczas zapisu rekordu');
+                getMessages()->addError($ex->getMessage());	
+            }
+        }
     }
     
     public function generateView(){

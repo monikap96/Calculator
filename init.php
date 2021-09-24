@@ -49,7 +49,26 @@
         global $router;
         return $router;
     }
-
+    
+    $database = null; //przygotuj Medoo, twórz tylko raz - wtedy kiedy potrzeba
+    function &getDatabase() {
+        global $myConfig, $database;
+        if (!isset($database)) {
+            require_once 'lib/medoo/Medoo.php';
+            $database = new \Medoo\Medoo([
+                'database_type' => &$myConfig->db_type,
+                'server' => &$myConfig->db_server,
+                'database_name' => &$myConfig->db_name,
+                'username' => &$myConfig->db_user,
+                'password' => &$myConfig->db_pass,
+                'charset' => &$myConfig->db_charset,
+                'port' => &$myConfig->db_port,
+                'prefix' => &$myConfig->db_prefix,
+                'option' => &$myConfig->db_option
+            ]);
+        }
+        return $database;
+    }
 
     require_once 'core/functions.php';
     

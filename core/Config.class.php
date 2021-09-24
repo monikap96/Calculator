@@ -13,4 +13,14 @@ class Config{
     
     public $roles;
     public $login_action;
+    
+    public $db_type;
+    public $db_server;
+    public $db_port;
+    public $db_name;
+    public $db_user;
+    public $db_pass;
+    public $db_charset;
+    public $db_prefix;
+    public $db_option;
 }

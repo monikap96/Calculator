@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-     <title>{$pageTitle|default:"Tytul"}</title>
+     <title>{$pageTitle|default:"Kalkulator"}</title>
 
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=Edge">
